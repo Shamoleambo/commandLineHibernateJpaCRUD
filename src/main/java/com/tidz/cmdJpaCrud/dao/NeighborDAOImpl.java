@@ -23,4 +23,10 @@ public class NeighborDAOImpl implements NeighborDAO {
 	public void save(Neighbor neighbor) {
 		this.entityManager.merge(neighbor);
 	}
+
+	@Override
+	public Neighbor findById(int id) {
+		Neighbor neighbor = this.entityManager.find(Neighbor.class, id);
+		return neighbor;
+	}
 }

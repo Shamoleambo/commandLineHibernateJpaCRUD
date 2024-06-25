@@ -26,7 +26,8 @@ public class CmdJpaCrudApplication {
 	@Bean
 	public CommandLineRunner runner(String[] args) {
 		return runner -> {
-			saveNewNeighbor(neighborDAO);
+			// saveNewNeighbor(neighborDAO);
+			findSingleNeighborById(neighborDAO);
 		};
 	}
 
@@ -35,6 +36,11 @@ public class CmdJpaCrudApplication {
 
 		dao.save(neighbor);
 		System.out.println("Saved in the db the following entity: " + neighbor);
+	}
+
+	private void findSingleNeighborById(NeighborDAO dao) {
+		Neighbor neighbor = dao.findById(1);
+		System.out.println("Neighbor with id 1: " + neighbor);
 	}
 
 }
