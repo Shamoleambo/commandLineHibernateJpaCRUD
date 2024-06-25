@@ -35,7 +35,15 @@ public class NeighborDAOImpl implements NeighborDAO {
 
 	@Override
 	public List<Neighbor> findAll() {
-		TypedQuery<Neighbor> query = this.entityManager.createQuery("FROM Neighbor", Neighbor.class);
+		TypedQuery<Neighbor> query = this.entityManager.createQuery("FROM Neighbor ORDER BY lastName DESC",
+				Neighbor.class);
+		return query.getResultList();
+	}
+
+	@Override
+	public List<Neighbor> findBy(String firstName) {
+		TypedQuery<Neighbor> query = this.entityManager.createQuery("FROM Neighbor WHERE firstName=:laranja", Neighbor.class);
+		query.setParameter("laranja", firstName);
 		return query.getResultList();
 	}
 }

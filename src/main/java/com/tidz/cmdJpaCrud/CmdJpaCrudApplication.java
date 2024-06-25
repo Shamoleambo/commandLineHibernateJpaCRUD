@@ -30,7 +30,8 @@ public class CmdJpaCrudApplication {
 		return runner -> {
 //			saveNewNeighbor(neighborDAO);
 //			findSingleNeighborById(neighborDAO);
-			findAllNeighbors(neighborDAO);
+//			findAllNeighbors(neighborDAO);
+			findAndOrderByFirstName(neighborDAO);
 		};
 	}
 
@@ -51,6 +52,15 @@ public class CmdJpaCrudApplication {
 		System.out.println("Here they are: ");
 		for (Neighbor n : neighbors) {
 			System.out.println("Neighbor: " + n);
+		}
+	}
+
+	private void findAndOrderByFirstName(NeighborDAO dao) {
+		System.out.println("Find and order by first name: ");
+
+		List<Neighbor> neighbors = dao.findBy("Silva");
+		for (Neighbor neighbor : neighbors) {
+			System.out.println(neighbor);
 		}
 	}
 

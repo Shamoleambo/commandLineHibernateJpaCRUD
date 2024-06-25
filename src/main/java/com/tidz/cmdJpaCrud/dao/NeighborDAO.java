@@ -11,4 +11,6 @@ public interface NeighborDAO {
 	public Neighbor findById(int id);
 
 	public List<Neighbor> findAll();
+
+	public List<Neighbor> findBy(String firstName);
 }
