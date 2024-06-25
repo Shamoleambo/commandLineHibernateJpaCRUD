@@ -1,11 +1,14 @@
 package com.tidz.cmdJpaCrud.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.tidz.cmdJpaCrud.entity.Neighbor;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 
 @Component
@@ -28,5 +31,11 @@ public class NeighborDAOImpl implements NeighborDAO {
 	public Neighbor findById(int id) {
 		Neighbor neighbor = this.entityManager.find(Neighbor.class, id);
 		return neighbor;
+	}
+
+	@Override
+	public List<Neighbor> findAll() {
+		TypedQuery<Neighbor> query = this.entityManager.createQuery("FROM Neighbor", Neighbor.class);
+		return query.getResultList();
 	}
 }

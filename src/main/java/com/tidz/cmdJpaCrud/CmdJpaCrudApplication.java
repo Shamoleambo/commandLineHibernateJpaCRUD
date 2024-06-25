@@ -1,5 +1,7 @@
 package com.tidz.cmdJpaCrud;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -26,13 +28,14 @@ public class CmdJpaCrudApplication {
 	@Bean
 	public CommandLineRunner runner(String[] args) {
 		return runner -> {
-			// saveNewNeighbor(neighborDAO);
-			findSingleNeighborById(neighborDAO);
+//			saveNewNeighbor(neighborDAO);
+//			findSingleNeighborById(neighborDAO);
+			findAllNeighbors(neighborDAO);
 		};
 	}
 
 	private void saveNewNeighbor(NeighborDAO dao) {
-		Neighbor neighbor = new Neighbor("Mano", "Silva", "mano@mail.com", "123, Mano do Bem Ave.");
+		Neighbor neighbor = new Neighbor("Guri", "Fimeza", "guriFMZ@mail.com", "29, Near St.");
 
 		dao.save(neighbor);
 		System.out.println("Saved in the db the following entity: " + neighbor);
@@ -41,6 +44,14 @@ public class CmdJpaCrudApplication {
 	private void findSingleNeighborById(NeighborDAO dao) {
 		Neighbor neighbor = dao.findById(1);
 		System.out.println("Neighbor with id 1: " + neighbor);
+	}
+
+	private void findAllNeighbors(NeighborDAO dao) {
+		List<Neighbor> neighbors = dao.findAll();
+		System.out.println("Here they are: ");
+		for (Neighbor n : neighbors) {
+			System.out.println("Neighbor: " + n);
+		}
 	}
 
 }
