@@ -32,7 +32,8 @@ public class CmdJpaCrudApplication {
 //			findSingleNeighborById(neighborDAO);
 //			findAllNeighbors(neighborDAO);
 //			findAndOrderByFirstName(neighborDAO);
-			updateNeighbor(neighborDAO);
+//			updateNeighbor(neighborDAO);
+			deleteSingleNeighbor(neighborDAO);
 		};
 	}
 
@@ -70,6 +71,11 @@ public class CmdJpaCrudApplication {
 
 		Neighbor neighbor = dao.update(1);
 		System.out.println(neighbor);
+	}
+
+	private void deleteSingleNeighbor(NeighborDAO dao) {
+		System.out.println("Delete stuff, check the db");
+		dao.delete(1);
 	}
 
 }

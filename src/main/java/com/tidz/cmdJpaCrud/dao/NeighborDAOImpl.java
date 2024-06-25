@@ -56,4 +56,11 @@ public class NeighborDAOImpl implements NeighborDAO {
 		this.entityManager.merge(neighbor);
 		return neighbor;
 	}
+	
+	@Override
+	@Transactional
+	public void delete(int id) {
+		Neighbor neighbor = this.entityManager.find(Neighbor.class, id);
+		this.entityManager.remove(neighbor);
+	}
 }

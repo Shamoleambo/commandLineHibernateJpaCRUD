@@ -13,6 +13,8 @@ public interface NeighborDAO {
 	public List<Neighbor> findAll();
 
 	public List<Neighbor> findBy(String firstName);
-	
+
 	public Neighbor update(int id);
+
+	public void delete(int id);
 }
