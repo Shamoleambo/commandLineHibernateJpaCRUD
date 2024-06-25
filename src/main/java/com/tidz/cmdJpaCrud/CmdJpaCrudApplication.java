@@ -31,7 +31,8 @@ public class CmdJpaCrudApplication {
 //			saveNewNeighbor(neighborDAO);
 //			findSingleNeighborById(neighborDAO);
 //			findAllNeighbors(neighborDAO);
-			findAndOrderByFirstName(neighborDAO);
+//			findAndOrderByFirstName(neighborDAO);
+			updateNeighbor(neighborDAO);
 		};
 	}
 
@@ -62,6 +63,13 @@ public class CmdJpaCrudApplication {
 		for (Neighbor neighbor : neighbors) {
 			System.out.println(neighbor);
 		}
+	}
+
+	private void updateNeighbor(NeighborDAO dao) {
+		System.out.println("Update");
+
+		Neighbor neighbor = dao.update(1);
+		System.out.println(neighbor);
 	}
 
 }

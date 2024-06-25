@@ -42,8 +42,18 @@ public class NeighborDAOImpl implements NeighborDAO {
 
 	@Override
 	public List<Neighbor> findBy(String firstName) {
-		TypedQuery<Neighbor> query = this.entityManager.createQuery("FROM Neighbor WHERE firstName=:laranja", Neighbor.class);
+		TypedQuery<Neighbor> query = this.entityManager.createQuery("FROM Neighbor WHERE firstName=:laranja",
+				Neighbor.class);
 		query.setParameter("laranja", firstName);
 		return query.getResultList();
+	}
+
+	@Override
+	@Transactional
+	public Neighbor update(int id) {
+		Neighbor neighbor = this.entityManager.find(Neighbor.class, id);
+		neighbor.setEmail("mein@mail.com");
+		this.entityManager.merge(neighbor);
+		return neighbor;
 	}
 }
